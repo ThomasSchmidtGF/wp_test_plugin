@@ -164,4 +164,6 @@ class Wp_test_plugin_Admin {
 	public function options_update() {
 		register_setting($this->plugin_name, $this->plugin_name, array($this, 'validate'));
 	}
+
+	
 }
