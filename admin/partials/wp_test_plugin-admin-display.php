@@ -42,7 +42,7 @@
 
 	<!-- remove some meta and generators from the <head> -->
 	<fieldset>
-		<legend class="screen-reader-text"><span>Clean WordPress head section</span></legend>
+		<legend class="screen-reader-text"><span> <?php _e('Clean WordPress head section', $this->plugin_name);?></span></legend>
 		<label for="<?php echo $this->plugin_name;?>-cleanup">
 			<input type="checkbox" id="<?php echo $this->plugin_name;?>-cleanup" name="<?php echo $this->plugin_name;?>[cleanup]" value="1" <?php checked( $cleanup, 1 ); ?> />
 			<span><?php esc_attr_e( 'Clean up the head section', $this->plugin_name ); ?></span>
@@ -97,3 +97,7 @@
     </form>
 
 </div>
+
+
+
+watch -de -n 60 "curl -s --header 'X-Auth-Token: 3b805e7776344713961905f5ffbbf63f' 'http://api.football-data.org/v1/competitions/467/fixtures' | jq -er '.fixtures[] | select(.status == \"IN_PLAY\") | [.homeTeamName, .awayTeamName, .result.goalsHomeTeam, .result.goalsAwayTeam] | @csv' | awk -F ',' '{print $1 \"\t\t\" $3 \" vs \" $4 \"\t\t\" $2}'"
