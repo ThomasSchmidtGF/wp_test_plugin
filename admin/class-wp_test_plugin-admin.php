@@ -72,12 +72,14 @@ class Wp_test_plugin_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array(), $this->version, 'all' );
 		if ( 'settings_page_wp_test_plugin' == get_current_screen() -> id ) {
-			// CSS stylesheet for Color Picker
-			wp_enqueue_style( 'wp-color-picker' );            
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array( 'wp-color-picker' ), $this->version, 'all' );
-		}
+            // CSS stylesheet for Color Picker
+            wp_enqueue_style( 'wp-color-picker' );
+            // CSS stylesheet for thickbox
+            wp_enqueue_style('thickbox');
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array('wp-clor-picker', 'thickbox'), $this->version, 'all' );
+        }
+
 
 	}
 
@@ -100,7 +102,11 @@ class Wp_test_plugin_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp_test_plugin-admin.js', array( 'jquery' ), $this->version, false );
+		if ( 'settings_page_wp_test_plugin' == get_current_screen() -> id ) {
+            wp_enqueue_media();
+            wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp_test_plugin-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version, false );         
+        }
+
 
 	}
 	/**
