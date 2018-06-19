@@ -37,7 +37,7 @@
 			imgContainer = $( '#upload_logo_preview' ),
 			imgIdInput = $( '#login_logo_id' ),
 			imgPreview = $('#upload_logo_preview'),        
-			imgDelButton = $('#wp_cbf-delete_logo_button'),
+			imgDelButton = $('#wp_test_plugin-delete_logo_button'),
 			// Color Pickers Inputs
 			colorPickerInputs = $( '.wp_test_plugin-color-picker' );
 
