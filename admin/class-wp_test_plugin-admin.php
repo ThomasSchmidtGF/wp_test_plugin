@@ -93,7 +93,7 @@ class Wp_test_plugin_Admin {
 			imgUploadButton.on( 'click', function( event ){
    
 			   event.preventDefault();
-   
+				//new comment, i need testmaterial
 			   // If the media frame already exists, reopen it.
 			   if ( frame ) {
 				 frame.open();
