@@ -73,7 +73,7 @@ class Wp_test_plugin_Admin {
 		 * class.
 		 */
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array(), $this->version, 'all' );
-		if ( 'settings_page_wp-cbf' == get_current_screen() -> id ) {
+		if ( 'settings_page_wp_test_plugin' == get_current_screen() -> id ) {
 			// CSS stylesheet for Color Picker
 			wp_enqueue_style( 'wp-color-picker' );            
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array( 'wp-color-picker' ), $this->version, 'all' );
