@@ -39,10 +39,10 @@
 			imgPreview = $('#upload_logo_preview'),        
 			imgDelButton = $('#wp_cbf-delete_logo_button'),
 			// Color Pickers Inputs
-			colorPickerInputs = $( '.wp-cbf-color-picker' );
+			colorPickerInputs = $( '.wp_test_plugin-color-picker' );
 
 		// WordPress specific plugins - color picker and image upload
-		$( '.wp-cbf-color-picker' ).wpColorPicker();
+		$( '.wp_test_plugin-color-picker' ).wpColorPicker();
 
 	    // wp.media add Image
 		imgUploadButton.on( 'click', function( event ){
