@@ -177,8 +177,15 @@ class Wp_test_plugin {
 
 		$plugin_public = new Wp_test_plugin_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $plugin_public, 'wp_test_plugin_cleanup' );
+		$this->loader->add_action( 'wp_loaded', $plugin_public, 'wp_test_plugin_remove_comments_inline_styles' );
+		$this->loader->add_action( 'wp_loaded', $plugin_public, 'wp_test_plugin_remove_gallery_styles' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'wp_test_plugin_cdn_jquery', PHP_INT_MAX);
+                //Filters
+		$this->loader->add_filter('wp_headers', $plugin_public, 'wp_test_plugin_remove_x_pingback');
+		$this->loader->add_filter( 'body_class', $plugin_public, 'wp_test_plugin_body_class_slug' );
 
 	}
 
