@@ -74,6 +74,11 @@ class Wp_test_plugin_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array(), $this->version, 'all' );
+		if ( 'settings_page_wp-cbf' == get_current_screen() -> id ) {
+			// CSS stylesheet for Color Picker
+			wp_enqueue_style( 'wp-color-picker' );            
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp_test_plugin-admin.css', array( 'wp-color-picker' ), $this->version, 'all' );
+		}
 
 	}
 
@@ -115,8 +120,11 @@ class Wp_test_plugin_Admin {
 		*        Administration Menus: http://codex.wordpress.org/Administration_Menus
 		*
 		*/
-		add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
-		);
+		add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
+		if ( 'settings_page_wp-cbf' == get_current_screen() -> id ) {
+            wp_enqueue_media();   
+            wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp_test_plugin-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version, false );         
+        }
 	}
 
 	/**
